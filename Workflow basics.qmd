@@ -1,0 +1,51 @@
+---
+title: "Workflow: basics"
+author: "Haris Farooqi"
+format: 
+  html:
+    embed-resources: true
+editor: visual
+---
+
+**2.5 Exercises**
+
+1.  Why does this code not work?
+
+```{r}
+my_variable <- 10
+my_varıable
+#> Error in eval(expr, envir, enclos): object 'my_varıable' not found
+```
+
+-   my_variaable was spelt incorrectly.
+
+2.  Tweak each of the following R commands so that they run correctly:
+
+```{r}
+#incorrect code:
+#libary(todyverse)
+
+#ggplot(dTA = mpg) + 
+#  geom_point(maping = aes(x = displ y = hwy)) +
+#  geom_smooth(method = "lm)
+
+
+library(tidyverse)
+
+ggplot(mpg, aes(x=displ,y=hwy)) + 
+  geom_point() +
+  geom_smooth(method="lm")
+```
+
+3.  Use Alt + Shift + K to open keyboard menu in RStudio.
+4.  Let’s revisit an exercise from the [Section 1.6](https://r4ds.hadley.nz/data-visualize#sec-ggsave). Run the following lines of code. Which of the two plots is saved as `mpg-plot.png`? Why?
+
+```{r}
+my_bar_plot <- ggplot(mpg, aes(x = class)) +
+  geom_bar()
+my_scatter_plot <- ggplot(mpg, aes(x = cty, y = hwy)) +
+  geom_point()
+ggsave(filename = "mpg-plot.png", plot = my_bar_plot)
+```
+
+-   my_bar_plot is saved since we have stored the plot we created in the my_bar_plot variable. then, we reference it in the argument plot in ggsave().
